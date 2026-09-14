@@ -1,0 +1,53 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header, main, footer{
+    font-size: medium;
+    width: 40%;
+}
+
+#menu {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+}
+
+#menu nav {
+    display: flex;
+    gap: 20px;
+
+}
+
+a{
+    text-decoration: none;
+    color: rgb(24, 112, 24);
+    font-size: medium;
+}
+
+.changeColorButton{
+    font-size: medium;
+    background-color: rgb(24, 112, 24);
+    padding: 11px;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(24, 112, 24);
+}
+
+.changeColorButton:hover{
+    background-color: white;
+    color: rgb(24, 112, 24);
+
+}
+
+section hr{
+    opacity: 0.2;
+}
+
+footer{
+    font-size: small;
+    color: grey;
+}

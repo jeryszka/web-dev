@@ -16,12 +16,13 @@
                 <a href="#skills">Umiejętności</a>
                 <a href="#contact">Kontakt</a>
             </nav>
-        </div>
-        <div id="changeColor">
-            <div class="changeColorButton">
-                Zmień motyw
+            <div id="changeColor">
+                <div class="changeColorButton">
+                    Zmień motyw
+                </div>  
             </div>
         </div>
+        <hr>
     </header>
     <hr>
     <main>
@@ -35,7 +36,8 @@
         <section id="#skills">
             <h2>Umiejętności</h2>
                 <p>Lista poniżej jest generowana przez JavaScript z tablicy:</p>
-                <div id="skillList"></div>
+                <ul id="skillList">
+                </ul>
 
             <hr>
         </section>
@@ -52,14 +54,13 @@
     <script>
         var skillListBox = document.getElementById("skillList"); 
         
-        let skills = ["HTML", "CSS", "JavaScript", "SQL", "Git", "Praca w zespole"]; 
+        const skills = ["HTML", "CSS", "JavaScript", "SQL", "Git", "Praca w zespole"]; 
         
         skills.forEach(function(skill) {
-            let newSkill = document.createElement("div");
+            let newSkill = document.createElement("li");
             newSkill.textContent = skill;
             
             newSkill.classList.add("skill-badge");
-            
             
             skillListBox.appendChild(newSkill);
         });
