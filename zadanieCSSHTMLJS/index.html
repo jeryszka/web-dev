@@ -27,10 +27,16 @@
     <main>
         <section id="#aboutMe">
             <h2>O mnie</h2>
+                <p>Swoją przygode z programowanie zacząłem wraz z szkołą średnią. Interesuję się matematyką, sportem oraz uwielbiam spędzać czas na świeżym powietrzu. </p>
+                <p>W wolnym czasie spotykam się z przyjaciółmi oraz gram w gry komputerowe.</p>
+                <p>Ta strona powstała jako powtórka HTML, CSS i JavaScriptu — bez żadnych frameworków, wszystko napisane ręcznie.</p>
             <hr>
         </section>
         <section id="#skills">
             <h2>Umiejętności</h2>
+                <p>Lista poniżej jest generowana przez JavaScript z tablicy:</p>
+                <div id="skillList"></div>
+
             <hr>
         </section>
         <section id="contact">
@@ -43,5 +49,20 @@
             2026 — Grzegorz Jercha. Zadanie MB3 z przedmiotu Programowanie aplikacji zaawansowanych webowych.
         </div>
     </footer>
+    <script>
+        var skillListBox = document.getElementById("skillList"); 
+        
+        let skills = ["HTML", "CSS", "JavaScript", "SQL", "Git", "Praca w zespole"]; 
+        
+        skills.forEach(function(skill) {
+            let newSkill = document.createElement("div");
+            newSkill.textContent = skill;
+            
+            newSkill.classList.add("skill-badge");
+            
+            
+            skillListBox.appendChild(newSkill);
+        });
+    </script>
 </body>
 </html>
