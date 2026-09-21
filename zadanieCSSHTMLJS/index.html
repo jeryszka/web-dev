@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Grzegorz Jercha — wizytówka</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,44 +26,157 @@
     </header>
     <hr>
     <main>
-        <section id="#aboutMe">
+        <!-- Poprawione ID (usunięto # z wewnątrz atrybutu id) -->
+        <section id="aboutMe">
             <h2>O mnie</h2>
-                <p>Swoją przygode z programowanie zacząłem wraz z szkołą średnią. Interesuję się matematyką, sportem oraz uwielbiam spędzać czas na świeżym powietrzu. </p>
-                <p>W wolnym czasie spotykam się z przyjaciółmi oraz gram w gry komputerowe.</p>
-                <p>Ta strona powstała jako powtórka HTML, CSS i JavaScriptu — bez żadnych frameworków, wszystko napisane ręcznie.</p>
+            <p>Swoją przygode z programowanie zacząłem wraz z szkołą średnią. Interesuję się matematyką, sportem oraz uwielbiam spędzać czas na świeżym powietrzu. </p>
+            <p>W wolnym czasie spotykam się z przyjaciółmi oraz gram w gry komputerowe.</p>
+            <p>Ta strona powstała jako powtórka HTML, CSS i JavaScriptu — bez żadnych frameworków, wszystko napisane ręcznie.</p>
             <hr>
         </section>
-        <section id="#skills">
+        
+        <!-- Poprawione ID -->
+        <section id="skills">
             <h2>Umiejętności</h2>
-                <p>Lista poniżej jest generowana przez JavaScript z tablicy:</p>
-                <ul id="skillList">
-                </ul>
-
+            <p>Lista poniżej jest generowana przez JavaScript z tablicy:</p>
+            <ul id="skillList"></ul>
             <hr>
         </section>
+        
         <section id="contact">
             <h2>Kontakt</h2>
+            <p>Napisz do mnie — formularz sprawdza dane i wyświetla potwierdzenie.</p>
+
+            <!-- Nowy formularz na wzór drugiego projektu -->
+            <form id="contactForm">
+                <div class="pole">
+                    <label for="name">Imię</label><br>
+                    <input type="text" name="name" id="name" placeholder="Jak masz na imię?">
+                </div>
+
+                <div class="pole">
+                    <label for="email">E-mail</label><br>
+                    <input type="email" name="email" id="email" placeholder="adres@example.com">
+                </div>
+
+                <div class="pole">
+                    <label for="topic">Temat</label><br>
+                    <select id="topic" name="topic">
+                        <option value="">— wybierz —</option>
+                        <option value="wspolpraca">Współpraca</option>
+                        <option value="pytanie">Pytanie</option>
+                        <option value="inne">Inne</option>
+                    </select>
+                </div>
+
+                <div class="pole">
+                    <label for="message">Wiadomość</label><br>
+                    <textarea id="message" name="message" rows="4" placeholder="Treść wiadomości"></textarea>
+                </div>
+
+                <button type="submit" class="changeColorButton" style="margin-top: 15px; cursor: pointer;">Wyślij</button>
+            </form>
+
+            <!-- Miejsce na komunikaty błędów lub sukcesu -->
+            <div id="komunikat" style="margin-top: 15px; font-weight: bold;"></div>
             <hr>
         </section>
     </main>
+    
     <footer>
         <div class="footerText">
             2026 — Grzegorz Jercha. Zadanie MB3 z przedmiotu Programowanie aplikacji zaawansowanych webowych.
         </div>
     </footer>
+
     <script>
+        // 1. GENEROWANIE LISTY UMIEJĘTNOŚCI
         var skillListBox = document.getElementById("skillList"); 
-        
         const skills = ["HTML", "CSS", "JavaScript", "SQL", "Git", "Praca w zespole"]; 
         
         skills.forEach(function(skill) {
             let newSkill = document.createElement("li");
             newSkill.textContent = skill;
-            
             newSkill.classList.add("skill-badge");
-            
             skillListBox.appendChild(newSkill);
         });
+
+        // 2. WALIDACJA FORMULARZA KROK PO KROKU
+        const form = document.getElementById("contactForm");
+        const komunikatBox = document.getElementById("komunikat");
+
+        form.addEventListener("submit", function(event) {
+            // Zatrzymujemy domyślne przeładowanie strony po wysłaniu formularza
+            event.preventDefault(); 
+
+            // Pobranie wartości pól i usunięcie zbędnych spacji (trim)
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const topic = document.getElementById("topic").value;
+            const message = document.getElementById("message").value.trim();
+
+            // Proste wyrażenie regularne do weryfikacji poprawności adresu e-mail
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Czyszczenie poprzedniego komunikatu i stylów
+            komunikatBox.textContent = "";
+            komunikatBox.style.color = "";
+
+            // Sprawdzanie warunków po kolei
+            if (name === "") {
+                komunikatBox.textContent = "Błąd: Pole 'Imię' nie może być puste.";
+                komunikatBox.style.color = "red";
+                return;
+            }
+
+            if (email === "") {
+                komunikatBox.textContent = "Błąd: Pole 'E-mail' nie może być puste.";
+                komunikatBox.style.color = "red";
+                return;
+            }
+
+            if (!emailRegex.test(email)) {
+                komunikatBox.textContent = "Błąd: Wprowadzony adres e-mail jest nieprawidłowy.";
+                komunikatBox.style.color = "red";
+                return;
+            }
+
+            if (topic === "") {
+                komunikatBox.textContent = "Błąd: Musisz wybrać temat wiadomości.";
+                komunikatBox.style.color = "red";
+                return;
+            }
+
+            if (message === "") {
+                komunikatBox.textContent = "Błąd: Treść wiadomości nie może być pusta.";
+                komunikatBox.style.color = "red";
+                return;
+            }
+
+            // Jeśli wszystkie warunki są spełnione:
+            komunikatBox.textContent = "Sukces! Formularz został wysłany poprawnie.";
+            komunikatBox.style.color = "green";
+
+            // Opcjonalne wyczyszczenie pól formularza po udanym wysłaniu
+            form.reset();
+        });
+
+        // 3. OBSŁUGA ZMIANY MOTYWU (DARK MODE)
+        // Znajdujemy przycisk za pomocą jego klasy
+        const themeButton = document.querySelector(".changeColorButton");
+
+        themeButton.addEventListener("click", function() {
+            // toggle() dodaje klasę 'dark-theme' jeśli jej nie ma, lub usuwa jeśli już jest
+            document.body.classList.toggle("dark-theme");
+            
+            // Opcjonalna zmiana tekstu wewnątrz przycisku w zależności od aktywnego trybu
+            if (document.body.classList.contains("dark-theme")) {
+                themeButton.textContent = "Jasny motyw";
+            } else {
+                themeButton.textContent = "Zmień motyw";
+            }
+        });
+
     </script>
 </body>
 </html>
