@@ -9,6 +9,6 @@ const budujListe = (tab) => {
     ).join("")
 }
 
+const filtruj = rosliny.filter( ({cena}) => cena < 100);
 
-
-document.querySelector("#lista").innerHTML = budujListe(rosliny)
+document.querySelector("#lista").innerHTML = budujListe(filtruj)
