@@ -14,23 +14,27 @@ const komunikatBox = document.getElementById("komunikat");
 form.addEventListener("submit", (event) => {
     event.preventDefault(); 
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const topic = document.getElementById("topic").value;
-    const message = document.getElementById("message").value.trim();
+    // const name = document.getElementById("name").value.trim();
+    // const email = document.getElementById("email").value.trim();
+    // const topic = document.getElementById("topic").value;
+    // const message = document.getElementById("message").value.trim();
+
+    const dane = Object.fromEntries(new FormData(form));
+
+    const {name, email, topic, message} = dane;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     komunikatBox.textContent = "";
     komunikatBox.style.color = "";
 
-    if (name === "") {
+    if (name.trim() === "") {
         komunikatBox.textContent = "Błąd: Pole 'Imię' nie może być puste.";
         komunikatBox.style.color = "red";
         return;
     }
 
-    if (email === "") {
+    if (email.trim() === "") {
         komunikatBox.textContent = "Błąd: Pole 'E-mail' nie może być puste.";
         komunikatBox.style.color = "red";
         return;
@@ -42,13 +46,13 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
-    if (topic === "") {
+    if (topic.trim() === "") {
         komunikatBox.textContent = "Błąd: Musisz wybrać temat wiadomości.";
         komunikatBox.style.color = "red";
         return;
     }
 
-    if (message === "") {
+    if (message.trim() === "") {
         komunikatBox.textContent = "Błąd: Treść wiadomości nie może być pusta.";
         komunikatBox.style.color = "red";
         return;
