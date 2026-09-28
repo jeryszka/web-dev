@@ -1,12 +1,20 @@
-var skillListBox = document.getElementById("skillList"); 
-const skills = ["HTML", "CSS", "JavaScript", "SQL", "Git", "Praca w zespole"]; 
+// var skillListBox = document.getElementById("skillList"); 
 
-skills.forEach((skill) => {
-    let newSkill = document.createElement("li");
-    newSkill.textContent = skill;
-    newSkill.classList.add("skill-badge");
-    skillListBox.appendChild(newSkill);
-});
+
+// skills.forEach((skill) => {
+//     let newSkill = document.createElement("li");
+//     newSkill.textContent = skill;
+//     newSkill.classList.add("skill-badge");
+//     skillListBox.appendChild(newSkill);
+// });
+
+const Skills = (skills) => {
+    return skills.map( ({nazwa, poziom}) => `
+    <li>${nazwa} - ${poziom}</li>`
+    ).join("");
+}
+
+document.querySelector("#skillList").innerHTML = Skills(skills);
 
 const form = document.getElementById("contactForm");
 const komunikatBox = document.getElementById("komunikat");
