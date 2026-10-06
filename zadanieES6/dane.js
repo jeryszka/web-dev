@@ -5,4 +5,6 @@ const skills = [
     {nazwa: "SQL", poziom: 2, kategoria: "backend"},
     {nazwa: "Git", poziom: 2, kategoria: "narzedzia"},
     {nazwa: "Praca w zespole", poziom: 2, kategoria: "miekkie"}
-]; 
+];
+
+export { skills };
