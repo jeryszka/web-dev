@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grzegorz Jercha — wizytówka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Grzegorz Jercha</h1>
+        <p>Uczeń czwartej klasy technikum, kierunek technik programista. Uczę się tworzenia aplikacji webowych.</p>
+        <div id="menu">
+            <nav>
+                <a href="#aboutMe">O mnie</a>
+                <a href="#skills">Umiejętności</a>
+                <a href="#inspiracje-sekcja">Inspiracje</a>
+                <a href="#contact">Kontakt</a>
+            </nav>
+            <div id="changeColor">
+                <div class="changeColorButton">
+                    Zmień motyw
+                </div>  
+            </div>
+        </div>
+        <hr>
+    </header>
+    <hr>
+    <main>
+        <section id="aboutMe">
+            <h2>O mnie</h2>
+            <p>Swoją przygode z programowanie zacząłem wraz z szkołą średnią. Interesuję się matematyką, sportem oraz uwielbiam spędzać czas na świeżym powietrzu. </p>
+            <p>W wolnym czasie spotykam się z przyjaciółmi oraz gram w gry komputerowe.</p>
+            <p>Ta strona powstała jako powtórka HTML, CSS i JavaScriptu — bez żadnych frameworków, wszystko napisane ręcznie.</p>
+            <hr>
+        </section>
+        
+        <section id="skills">
+            <h2>Umiejętności</h2>
+            <p>Lista poniżej jest generowana przez JavaScript z tablicy:</p>
+
+            <div id="filtry">
+                <button type="button" class="aktywny" data-kategoria="wszystkie">Wszystkie</button>
+                <button type="button" data-kategoria="frontend">Frontend</button>
+                <button type="button" data-kategoria="backend">Backend</button>
+                <button type="button" data-kategoria="narzedzia">Narzędzia</button>
+                <button type="button" data-kategoria="miekkie">Miękkie</button>
+            </div>
+
+            <p id="podsumowanie"></p>
+
+            <ul id="lista-umiejetnosci"></ul>
+
+            <hr>
+        </section>
+        
+        <section id="inspiracje-sekcja">
+            <h2>Inspiracje</h2>
+            <p>Osoby pobrane z publicznego API w chwili otwarcia strony:</p>
+            <div id="inspiracje"></div>
+        </section>
+
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <p>Napisz do mnie — formularz sprawdza dane i wyświetla potwierdzenie.</p>
+
+            <form id="contactForm">
+                <div class="pole">
+                    <label for="name">Imię</label><br>
+                    <input type="text" name="name" id="name" placeholder="Jak masz na imię?">
+                </div>
+
+                <div class="pole">
+                    <label for="email">E-mail</label><br>
+                    <input type="email" name="email" id="email" placeholder="adres@example.com">
+                </div>
+
+                <div class="pole">
+                    <label for="topic">Temat</label><br>
+                    <select id="topic" name="topic">
+                        <option value="">— wybierz —</option>
+                        <option value="wspolpraca">Współpraca</option>
+                        <option value="pytanie">Pytanie</option>
+                        <option value="inne">Inne</option>
+                    </select>
+                </div>
+
+                <div class="pole">
+                    <label for="message">Wiadomość</label><br>
+                    <textarea id="message" name="message" rows="4" placeholder="Treść wiadomości"></textarea>
+                </div>
+
+                <button type="submit" class="changeColorButton" style="margin-top: 15px; cursor: pointer;">Wyślij</button>
+            </form>
+
+            <!-- Miejsce na komunikaty błędów lub sukcesu -->
+            <div id="komunikat" style="margin-top: 15px; font-weight: bold;"></div>
+            <hr>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footerText">
+            2026 — Grzegorz Jercha. Zadanie MB3 z przedmiotu Programowanie aplikacji zaawansowanych webowych.
+        </div>
+    </footer>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
