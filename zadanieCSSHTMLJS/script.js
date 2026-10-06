@@ -1,4 +1,4 @@
-const skills = [
+const umiejetnosci = [
     "HTML",
     "CSS",
     "JavaScript",
@@ -7,18 +7,25 @@ const skills = [
     "Praca w zespole"
 ];
 
-const skillListBox = document.querySelector("#skillList");
+const pokazUmiejetnosci = (lista) => {
+    const kontener = document.querySelector("#skillList");
 
-skills.forEach((skill) => {
-    const newSkill = document.createElement("li");
-    newSkill.textContent = skill;
-    newSkill.classList.add("skill-badge");
-    skillListBox.appendChild(newSkill);
-});
+    lista.forEach((nazwa) => {
+        const element = document.createElement("li");
+        element.textContent = nazwa;
+        kontener.appendChild(element);
+    });
+};
 
+pokazUmiejetnosci(umiejetnosci);
 
 const form = document.querySelector("#contactForm");
 const komunikatBox = document.querySelector("#komunikat");
+
+const pokazKomunikat = (tresc, rodzaj) => {
+    komunikatBox.textContent = tresc;
+    komunikatBox.style.color = rodzaj === "blad" ? "red" : "green";
+};
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -28,47 +35,40 @@ form.addEventListener("submit", (event) => {
     const topic = document.querySelector("#topic").value;
     const message = document.querySelector("#message").value.trim();
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    komunikatBox.textContent = "";
-    komunikatBox.style.color = "";
-
     if (name === "") {
-        komunikatBox.textContent = "Błąd: Pole 'Imię' nie może być puste.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Podaj imię.", "blad");
         return;
     }
 
     if (email === "") {
-        komunikatBox.textContent = "Błąd: Pole 'E-mail' nie może być puste.";
-        komunikatBox.style.color = "red";
-        return;
-    }
-
-    if (!emailRegex.test(email)) {
-        komunikatBox.textContent = "Błąd: Wprowadzony adres e-mail jest nieprawidłowy.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Podaj adres e-mail.", "blad");
         return;
     }
 
     if (topic === "") {
-        komunikatBox.textContent = "Błąd: Musisz wybrać temat wiadomości.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Wybierz temat wiadomości.", "blad");
         return;
     }
 
     if (message === "") {
-        komunikatBox.textContent = "Błąd: Treść wiadomości nie może być pusta.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Podaj treść wiadomości.", "blad");
         return;
     }
 
-    komunikatBox.textContent = "Sukces! Formularz został wysłany poprawnie.";
-    komunikatBox.style.color = "green";
+    pokazKomunikat(
+        `Dziękuję, ${name}. Wiadomość została przyjęta.`,
+        "sukces"
+    );
+
+    console.log("Dane z formularza:", {
+        name,
+        email,
+        topic,
+        message
+    });
 
     form.reset();
 });
-
 
 const themeButton = document.querySelector(".changeColorButton");
 
