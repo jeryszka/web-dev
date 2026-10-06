@@ -14,6 +14,7 @@
             <nav>
                 <a href="#aboutMe">O mnie</a>
                 <a href="#skills">Umiejętności</a>
+                <a href="#inspiracje-sekcja">Inspiracje</a>
                 <a href="#contact">Kontakt</a>
             </nav>
             <div id="changeColor">
@@ -26,7 +27,6 @@
     </header>
     <hr>
     <main>
-        <!-- Poprawione ID (usunięto # z wewnątrz atrybutu id) -->
         <section id="aboutMe">
             <h2>O mnie</h2>
             <p>Swoją przygode z programowanie zacząłem wraz z szkołą średnią. Interesuję się matematyką, sportem oraz uwielbiam spędzać czas na świeżym powietrzu. </p>
@@ -35,7 +35,6 @@
             <hr>
         </section>
         
-        <!-- Poprawione ID -->
         <section id="skills">
             <h2>Umiejętności</h2>
             <p>Lista poniżej jest generowana przez JavaScript z tablicy:</p>
@@ -55,11 +54,16 @@
             <hr>
         </section>
         
+        <section id="inspiracje-sekcja">
+            <h2>Inspiracje</h2>
+            <p>Osoby pobrane z publicznego API w chwili otwarcia strony:</p>
+            <div id="inspiracje"></div>
+        </section>
+
         <section id="contact">
             <h2>Kontakt</h2>
             <p>Napisz do mnie — formularz sprawdza dane i wyświetla potwierdzenie.</p>
 
-            <!-- Nowy formularz na wzór drugiego projektu -->
             <form id="contactForm">
                 <div class="pole">
                     <label for="name">Imię</label><br>
