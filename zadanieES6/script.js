@@ -10,6 +10,13 @@ const listaEl = document.querySelector("#lista-umiejetnosci");
 const podsumowanieEl = document.querySelector("#podsumowanie");
 const filtryEl = document.querySelector("#filtry");
 
+/**
+ * Wyświetla umiejętności dla wybranej kategorii.
+ *
+ * @param {string} kategoria - nazwa kategorii albo "wszystkie"
+ * @returns {void}
+ */
+
 const pokazUmiejetnosci = (kategoria = "wszystkie") => {
     const wybrane = filtrujPoKategorii(skills, kategoria);
 
@@ -100,6 +107,14 @@ themeButton.addEventListener("click", () => {
 
 const inspiracjeEl = document.querySelector("#inspiracje");
 
+/**
+ * Pobiera listę użytkowników z publicznego API.
+ *
+ * @param {string} adres - pełny adres zasobu
+ * @returns {Promise<Array<Object>>} tablica użytkowników
+ * @throws {Error} gdy serwer odpowie statusem innym niż 2xx
+ */
+
 const pobierzUzytkownikow = async (adres) => {
     const odpowiedz = await fetch(adres);
 
@@ -109,6 +124,12 @@ const pobierzUzytkownikow = async (adres) => {
 
     return odpowiedz.json();
 };
+
+/**
+ * Wyświetla użytkowników pobranych z publicznego API.
+ *
+ * @returns {Promise<void>} obietnica zakończenia operacji
+ */
 
 const pokazInspiracje = async () => {
     inspiracjeEl.innerHTML = `<p class="ladowanie">Ładowanie…</p>`;
