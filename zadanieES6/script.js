@@ -1,36 +1,10 @@
-import { skills } from "./dane.js";
+import { skills, ADRES_API } from "./dane.js";
 
-const budujListe = (lista) =>
-    lista
-        .map(({ nazwa, poziom }) => `
-            <li>
-                <span class="nazwa">${nazwa}</span>
-                <span class="poziom" title="Poziom ${poziom} z 5">
-                    ${"●".repeat(poziom)}${"○".repeat(5 - poziom)}
-                </span>
-            </li>
-        `)
-        .join("");
-
-const filtrujPoKategorii = (lista, kategoria) =>
-    kategoria === "wszystkie"
-        ? [...lista]
-        : lista.filter(u => u.kategoria === kategoria);
-
-const sredniPoziom = (lista) => {
-    if (lista.length === 0) {
-        return 0;
-    }
-
-    const suma = lista.reduce((razem, { poziom }) => razem + poziom, 0);
-
-    return Math.round((suma / lista.length) * 10) / 10;
-};
-
-const podsumowanie = (lista) =>
-    lista.length === 0
-        ? "Brak umiejętności w tej kategorii."
-        : `Umiejętności: ${lista.length} · średni poziom: ${sredniPoziom(lista)}`;
+import {
+    budujListe,
+    filtrujPoKategorii,
+    podsumowanie
+} from "./umiejetnosci.js";
 
 const listaEl = document.querySelector("#lista-umiejetnosci");
 const podsumowanieEl = document.querySelector("#podsumowanie");
