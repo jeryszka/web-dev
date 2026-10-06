@@ -1,0 +1,282 @@
+/* ==========================================================================
+   1. GLOBALNE STYLE I UKŁAD STRONY
+   ========================================================================== */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header, main, footer {
+    width: 50%;
+    font-size: medium;
+}
+
+footer {
+    font-size: small;
+    color: grey;
+}
+
+section hr {
+    opacity: 0.2;
+}
+
+a {
+    font-size: medium;
+    color: rgb(24, 112, 24);
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   2. NAWIGACJA I PRZYCISKI
+   ========================================================================== */
+#menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#menu nav {
+    display: flex;
+    gap: 20px;
+}
+
+/* Przycisk akcji / zmiany motywu */
+.changeColorButton {
+    padding: 11px;
+    font-size: medium;
+    color: white;
+    background-color: rgb(24, 112, 24);
+    border: 1px solid rgb(24, 112, 24);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.changeColorButton:hover {
+    color: rgb(24, 112, 24);
+    background-color: white;
+}
+
+/* ==========================================================================
+   3. SEKCYJNE FILTRY
+   ========================================================================== */
+#filtry {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+#filtry button {
+    padding: 6px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    color: rgb(24, 112, 24);
+    background-color: transparent;
+    border: 1px solid rgb(24, 112, 24);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#filtry button:hover {
+    background-color: rgba(24, 112, 24, 0.1);
+}
+
+#filtry button.aktywny {
+    color: #ffffff;
+    background-color: rgb(24, 112, 24);
+}
+
+#podsumowanie {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #555555;
+}
+
+/* ==========================================================================
+   4. LISTA UMIEJĘTNOŚCI
+   ========================================================================== */
+#lista-umiejetnosci {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 10px 0;
+}
+
+li {
+    padding: 10px;
+    margin: 5px;
+    font-size: medium;
+    list-style: none;
+    background-color: rgba(24, 112, 24, 0.178);
+    border: 1px solid rgba(24, 112, 24, 0.493);
+    border-radius: 5px;
+}
+
+#lista-umiejetnosci .poziom {
+    font-size: 12px;
+    color: rgb(24, 112, 24);
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   5. FORMULARZ KONTAKTOWY
+   ========================================================================== */
+#contactForm {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.pole {
+    margin-bottom: 15px;
+}
+
+.pole label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-family: inherit;
+    font-size: medium;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border-color: rgb(24, 112, 24);
+    outline: none;
+    box-shadow: 0 0 5px rgba(24, 112, 24, 0.3);
+}
+
+textarea {
+    resize: none;
+}
+
+#contactForm button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   6. TRYB CIEMNY (DARK THEME)
+   ========================================================================== */
+body.dark-theme {
+    color: #f5f5f5;
+    background-color: #1a1a1a;
+}
+
+body.dark-theme a {
+    color: #4ade80;
+}
+
+body.dark-theme .pole label {
+    color: #e0e0e0;
+}
+
+body.dark-theme #podsumowanie {
+    color: #aaa;
+}
+
+/* Pola formularza w trybie ciemnym */
+body.dark-theme input[type="text"],
+body.dark-theme input[type="email"],
+body.dark-theme select,
+body.dark-theme textarea {
+    color: #ffffff;
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+body.dark-theme input[type="text"]:focus,
+body.dark-theme input[type="email"]:focus,
+body.dark-theme select:focus,
+body.dark-theme textarea:focus {
+    border-color: #4ade80;
+    box-shadow: 0 0 5px rgba(74, 222, 128, 0.4);
+}
+
+/* Kafelki umiejętności w trybie ciemnym */
+body.dark-theme li {
+    color: #ffffff;
+    background-color: rgba(74, 222, 128, 0.15);
+    border-color: rgba(74, 222, 128, 0.4);
+}
+
+body.dark-theme #lista-umiejetnosci .poziom {
+    color: #4ade80;
+}
+
+/* Przyciski główne w trybie ciemnym */
+body.dark-theme .changeColorButton {
+    color: #1a1a1a;
+    background-color: #4ade80;
+    border-color: #4ade80;
+}
+
+body.dark-theme .changeColorButton:hover {
+    color: #4ade80;
+    background-color: transparent;
+}
+
+/* Przyciski filtrów w trybie ciemnym */
+body.dark-theme #filtry button {
+    color: #4ade80;
+    border-color: #4ade80;
+}
+
+body.dark-theme #filtry button:hover {
+    background-color: rgba(74, 222, 128, 0.15);
+}
+
+body.dark-theme #filtry button.aktywny {
+    color: #1a1a1a;
+    background-color: #4ade80;
+}
+
+.ladowanie {
+    color: #777777;
+    font-style: italic;
+}
+
+#inspiracje .blad {
+    color: #b02a2a;
+    font-weight: bold;
+}
+
+.osoby {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.osoby li {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.osoby span {
+    font-size: 14px;
+    color: #777777;
+}
