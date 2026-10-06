@@ -52,7 +52,7 @@ footer{
     color: grey;
 }
 
-#skillList {
+#lista-umiejetnosci {
     display: flex;
     flex-wrap: wrap;       
     justify-content: flex-start; 
@@ -174,3 +174,8 @@ body.dark-theme .changeColorButton:hover {
     color: #4ade80;
 }
 
+#lista-umiejetnosci .poziom {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgb(24, 112, 24);
+}

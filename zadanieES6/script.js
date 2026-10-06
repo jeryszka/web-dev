@@ -1,31 +1,26 @@
-// var skillListBox = document.getElementById("skillList"); 
+import { skills } from "./dane.js";
 
+const budujListe = (lista) =>
+    lista
+        .map(({ nazwa, poziom }) => `
+            <li>
+                <span class="nazwa">${nazwa}</span>
+                <span class="poziom" title="Poziom ${poziom} z 5">
+                    ${"●".repeat(poziom)}${"○".repeat(5 - poziom)}
+                </span>
+            </li>
+        `)
+        .join("");
 
-// skills.forEach((skill) => {
-//     let newSkill = document.createElement("li");
-//     newSkill.textContent = skill;
-//     newSkill.classList.add("skill-badge");
-//     skillListBox.appendChild(newSkill);
-// });
+const listaEl = document.querySelector("#lista-umiejetnosci");
 
-const Skills = (skills) => {
-    return skills.map( ({nazwa, poziom}) => `
-    <li>${nazwa} - ${poziom}</li>`
-    ).join("");
-}
-
-document.querySelector("#skillList").innerHTML = Skills(skills);
+listaEl.innerHTML = budujListe(skills);
 
 const form = document.getElementById("contactForm");
 const komunikatBox = document.getElementById("komunikat");
 
 form.addEventListener("submit", (event) => {
     event.preventDefault(); 
-
-    // const name = document.getElementById("name").value.trim();
-    // const email = document.getElementById("email").value.trim();
-    // const topic = document.getElementById("topic").value;
-    // const message = document.getElementById("message").value.trim();
 
     const dane = Object.fromEntries(new FormData(form));
 
