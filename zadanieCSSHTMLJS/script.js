@@ -1,83 +1,80 @@
-// 1. GENEROWANIE LISTY UMIEJĘTNOŚCI
-var skillListBox = document.getElementById("skillList"); 
-const skills = ["HTML", "CSS", "JavaScript", "SQL", "Git", "Praca w zespole"]; 
+const umiejetnosci = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "SQL",
+    "Git",
+    "Praca w zespole"
+];
 
-skills.forEach(function(skill) {
-    let newSkill = document.createElement("li");
-    newSkill.textContent = skill;
-    newSkill.classList.add("skill-badge");
-    skillListBox.appendChild(newSkill);
-});
+const pokazUmiejetnosci = (lista) => {
+    const kontener = document.querySelector("#skillList");
 
-// 2. WALIDACJA FORMULARZA KROK PO KROKU
-const form = document.getElementById("contactForm");
-const komunikatBox = document.getElementById("komunikat");
+    lista.forEach((nazwa) => {
+        const element = document.createElement("li");
+        element.textContent = nazwa;
+        kontener.appendChild(element);
+    });
+};
 
-form.addEventListener("submit", function(event) {
-    // Zatrzymujemy domyślne przeładowanie strony po wysłaniu formularza
-    event.preventDefault(); 
+pokazUmiejetnosci(umiejetnosci);
 
-    // Pobranie wartości pól i usunięcie zbędnych spacji (trim)
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const topic = document.getElementById("topic").value;
-    const message = document.getElementById("message").value.trim();
+const form = document.querySelector("#contactForm");
+const komunikatBox = document.querySelector("#komunikat");
 
-    // Proste wyrażenie regularne do weryfikacji poprawności adresu e-mail
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const pokazKomunikat = (tresc, rodzaj) => {
+    komunikatBox.textContent = tresc;
+    komunikatBox.style.color = rodzaj === "blad" ? "red" : "green";
+};
 
-    // Czyszczenie poprzedniego komunikatu i stylów
-    komunikatBox.textContent = "";
-    komunikatBox.style.color = "";
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    // Sprawdzanie warunków po kolei
+    const name = document.querySelector("#name").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const topic = document.querySelector("#topic").value;
+    const message = document.querySelector("#message").value.trim();
+
     if (name === "") {
-        komunikatBox.textContent = "Błąd: Pole 'Imię' nie może być puste.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Podaj imię.", "blad");
         return;
     }
 
     if (email === "") {
-        komunikatBox.textContent = "Błąd: Pole 'E-mail' nie może być puste.";
-        komunikatBox.style.color = "red";
-        return;
-    }
-
-    if (!emailRegex.test(email)) {
-        komunikatBox.textContent = "Błąd: Wprowadzony adres e-mail jest nieprawidłowy.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Podaj adres e-mail.", "blad");
         return;
     }
 
     if (topic === "") {
-        komunikatBox.textContent = "Błąd: Musisz wybrać temat wiadomości.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Wybierz temat wiadomości.", "blad");
         return;
     }
 
     if (message === "") {
-        komunikatBox.textContent = "Błąd: Treść wiadomości nie może być pusta.";
-        komunikatBox.style.color = "red";
+        pokazKomunikat("Podaj treść wiadomości.", "blad");
         return;
     }
 
-    // Jeśli wszystkie warunki są spełnione:
-    komunikatBox.textContent = "Sukces! Formularz został wysłany poprawnie.";
-    komunikatBox.style.color = "green";
+    pokazKomunikat(
+        `Dziękuję, ${name}. Wiadomość została przyjęta.`,
+        "sukces"
+    );
 
-    // Opcjonalne wyczyszczenie pól formularza po udanym wysłaniu
+    console.log("Dane z formularza:", {
+        name,
+        email,
+        topic,
+        message
+    });
+
     form.reset();
 });
 
-// 3. OBSŁUGA ZMIANY MOTYWU (DARK MODE)
-// Znajdujemy przycisk za pomocą jego klasy
 const themeButton = document.querySelector(".changeColorButton");
 
-themeButton.addEventListener("click", function() {
-    // toggle() dodaje klasę 'dark-theme' jeśli jej nie ma, lub usuwa jeśli już jest
+themeButton.addEventListener("click", () => {
     document.body.classList.toggle("dark-theme");
-    
-    // Opcjonalna zmiana tekstu wewnątrz przycisku w zależności od aktywnego trybu
+
     if (document.body.classList.contains("dark-theme")) {
         themeButton.textContent = "Jasny motyw";
     } else {
