@@ -31,6 +31,24 @@ const dodajZadanie = async (tekst) => {
     console.log(`Dodano zadanie nr ${nowe.length}: ${tekst.trim()}`);
 };
 
+// Oznacza zadanie o podanym numerze jako wykonane.
+const oznaczZrobione = async (tekstNumeru) => {
+    const zadania = await wczytaj();
+    const numer = Number(tekstNumeru);
+
+    if (!Number.isInteger(numer) || numer < 1 || numer > zadania.length) {
+        console.error(`Błąd: podaj numer zadania od 1 do
+        ${zadania.length}.`);
+        return;
+    }
+
+    const nowe = zadania.map((zadanie, i) => i === numer - 1 ? { ...zadanie, zrobione: true } : zadanie );
+    
+    await zapisz(nowe);
+    
+    console.log(`Zadanie nr ${numer} oznaczone jako zrobione: ${nowe[numer - 1].tekst}`);
+};
+
 switch (komenda) {
     case "lista":
         await pokazListe();
@@ -38,5 +56,9 @@ switch (komenda) {
 
     case "dodaj":
         await dodajZadanie(argument);
+        break;
+
+    case "zrobione":
+        await oznaczZrobione(argument);
         break;
 }
