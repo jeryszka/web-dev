@@ -1,0 +1,21 @@
+{
+  "name": "web-dev",
+  "version": "1.0.0",
+  "description": "Lista zadań obsługiwana z terminala",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeryszka/web-dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/jeryszka/web-dev/issues"
+  },
+  "homepage": "https://github.com/jeryszka/web-dev#readme"
+}
