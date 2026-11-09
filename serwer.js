@@ -8,5 +8,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log (`Serwer działa na porcie ${PORT}`);
+    console.log (`http://localhost:${PORT}`);
 })
