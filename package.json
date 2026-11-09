@@ -1,0 +1,24 @@
+{
+  "name": "web-dev",
+  "version": "1.0.0",
+  "description": "Serwer katalogu gier planszowych",
+  "main": "serwer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeryszka/web-dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/jeryszka/web-dev/issues"
+  },
+  "homepage": "https://github.com/jeryszka/web-dev#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
